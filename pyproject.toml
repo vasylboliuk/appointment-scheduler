@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "appoinment-scheduler"
+version = "0.1.0"
+description = "Appoinment Scheduller API PET project"
+authors = ["Vasyl Boliuk <vbboliuk@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+ruff = "^0.5.5"
+bandit = "^1.7.9"
+commitizen = "^3.28.0"
+git-changelog = "^2.5.2"
+pre-commit = "^3.7.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
