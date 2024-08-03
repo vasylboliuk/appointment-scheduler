@@ -10,3 +10,11 @@ repos:
     rev: 23.1a1
     hooks:
       - id: black
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.6
+    hooks:
+      - id: ruff
+        name: Ruff
+        entry: ruff check --fix
+        language: system
+        types: [ python ]
