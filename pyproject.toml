@@ -14,6 +14,8 @@ ruff = "^0.5.5"
 bandit = "^1.7.9"
 commitizen = "^3.28.0"
 git-changelog = "^2.5.2"
+isort = "^5.13.2"
+flake8 = "^1.1.1"
 
 [build-system]
 requires = ["poetry-core"]

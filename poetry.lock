@@ -232,6 +232,16 @@ testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", 
 typing = ["typing-extensions (>=4.8)"]
 
 [[package]]
+name = "flake8"
+version = "1.7.0"
+description = "code checking using pep8 and pyflakes"
+optional = false
+python-versions = "*"
+files = [
+    {file = "flake8-1.7.0.tar.gz", hash = "sha256:3318f09503c202476082e9b915f258076be2bcd0d1acbbab49e001d5707eb723"},
+]
+
+[[package]]
 name = "git-changelog"
 version = "2.5.2"
 description = "Automatic Changelog generator using Jinja2 templates."
@@ -261,6 +271,20 @@ files = [
 
 [package.extras]
 license = ["ukkonen"]
+
+[[package]]
+name = "isort"
+version = "5.13.2"
+description = "A Python utility / library to sort Python imports."
+optional = false
+python-versions = ">=3.8.0"
+files = [
+    {file = "isort-5.13.2-py3-none-any.whl", hash = "sha256:8ca5e72a8d85860d5a3fa69b8745237f2939afe12dbf656afbcb47fe72d947a6"},
+    {file = "isort-5.13.2.tar.gz", hash = "sha256:48fdfcb9face5d58a4f6dde2e72a1fb8dcaf8ab26f95ab49fab84c2ddefb0109"},
+]
+
+[package.extras]
+colors = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "jinja2"
@@ -681,4 +705,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "d0b5cf080e3a049647f0edebb11278781808f62ca993c1339f5db37123d92588"
+content-hash = "2ba170608a8913346602ecd2361681ad856c27b9d2592df6676c218dc2afb730"

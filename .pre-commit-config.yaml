@@ -1,16 +1,31 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
-    hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-added-large-files
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.5.6
+  - repo: local
     hooks:
       - id: ruff
         name: Ruff
         entry: ruff check --fix
         language: system
         types: [ python ]
+
+      - id: isort
+        name: Isort import sorter
+        entry: isort
+        language: python
+        types: [ python ]
+        pass_filenames: false
+        fail_fast: true
+
+      - id: bandit
+        name: bandit security code checker
+        entry: bandit -r
+        language: python
+        types: [ python ]
+
+      - id: flake8
+        name: Flake8 code style checker
+        entry: flake8
+        args: [ "--max-line-length=120" ]
+        language: python
+        types: [ python ]
+        pass_filenames: false
+        fail_fast: true
