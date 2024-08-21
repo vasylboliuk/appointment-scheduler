@@ -1,31 +1,20 @@
 repos:
   - repo: local
     hooks:
+      - id: ruff-format
+        name: Ruff format
+        entry: ruff format
+        language: python
+        types: [ python ]
+
       - id: ruff
         name: Ruff
         entry: ruff check --fix
         language: system
         types: [ python ]
 
-      - id: isort
-        name: Isort import sorter
-        entry: isort
-        language: python
-        types: [ python ]
-        pass_filenames: false
-        fail_fast: true
-
       - id: bandit
         name: bandit security code checker
         entry: bandit -r
         language: python
         types: [ python ]
-
-      - id: flake8
-        name: Flake8 code style checker
-        entry: flake8
-        args: [ "--max-line-length=120" ]
-        language: python
-        types: [ python ]
-        pass_filenames: false
-        fail_fast: true
