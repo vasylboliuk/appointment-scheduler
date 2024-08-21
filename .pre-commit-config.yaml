@@ -12,9 +12,11 @@ repos:
         entry: ruff check --fix
         language: system
         types: [ python ]
+        fail_fast: true
 
       - id: bandit
         name: bandit security code checker
         entry: bandit -r
         language: python
         types: [ python ]
+        fail_fast: true
