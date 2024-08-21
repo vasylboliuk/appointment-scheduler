@@ -1,0 +1,22 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: Ruff format
+        entry: ruff format
+        language: python
+        types: [ python ]
+
+      - id: ruff
+        name: Ruff
+        entry: ruff check --fix
+        language: system
+        types: [ python ]
+        fail_fast: true
+
+      - id: bandit
+        name: bandit security code checker
+        entry: bandit -r
+        language: python
+        types: [ python ]
+        fail_fast: true
