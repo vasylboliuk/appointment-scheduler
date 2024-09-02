@@ -1,4 +1,4 @@
-"""Constants.
+"""Utils.
 
 This module provides classes to represent utils.
 """
