@@ -3,25 +3,21 @@
 This module provides classes to represent utils.
 """
 
-from src.core.constants import CommonPaths
+import yaml
 
 
-class ConfigLoader:
+class FileUtil:
+    """
+    File Util class represents methods working with files.
+    """
+
     @staticmethod
-    def load_application_properties(config_name="app.properties") -> dict:
+    def read_yaml_file(file_path: str):
         """
-        Load application properties.
-        :param config_name:
-        :return: dict of properties
+        Read yaml file by "file_path".
+        :param file_path:
+        :return:
         """
-        resources_dir_path = CommonPaths.project_root
-        file_path = resources_dir_path.joinpath(config_name)
-        properties = {}
-        with open(file_path, "r", encoding="utf-8") as file:
-            for line in file:
-                line = line.strip()
-                if not line or line.startswith("#"):
-                    continue
-                key, value = line.split("=", 1)
-                properties[key.strip()] = value.strip()
-        return properties
+        with open(file_path, "r", encoding="utf-8") as f:
+            file_data = yaml.safe_load(f.read())
+        return file_data

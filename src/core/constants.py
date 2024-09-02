@@ -9,5 +9,5 @@ from pathlib import Path
 class CommonPaths:
     """CommonPaths class that store paths to project root, directories, packages."""
 
-    project_root = Path(__file__).parent.resolve()
+    project_root = Path(__file__).parent.parent.resolve()
     resource_path = project_root.joinpath("resources")
