@@ -1,4 +1,9 @@
-from src.core.common_path import CommonPaths
+"""Constants.
+
+This module provides classes to represent utils.
+"""
+
+from src.core.constants import CommonPaths
 
 
 class ConfigLoader:
