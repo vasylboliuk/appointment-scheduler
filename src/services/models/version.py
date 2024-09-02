@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 
-class Version(BaseModel):
+class VersionResponse(BaseModel):
     version: str
