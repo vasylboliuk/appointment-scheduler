@@ -1,0 +1,32 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+.history/*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Terraform/Terragrunt
+.terraform
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+.terragrunt-cache
+
+# .env file
+.env
+venv
+
+# Python
+__pycache__
