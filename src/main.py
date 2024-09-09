@@ -13,6 +13,7 @@ app.include_router(version_router, prefix="/api")
 def main():
     """
     Main method represents entry point for start application.
+
     :return:
     """
     settings = Settings()

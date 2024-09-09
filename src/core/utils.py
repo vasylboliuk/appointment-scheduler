@@ -12,9 +12,10 @@ class FileUtil:
     """
 
     @staticmethod
-    def read_yaml_file(file_path: str):
+    def read_yaml_file(file_path: str) -> dict:
         """
         Read yaml file by "file_path".
+
         :param file_path:
         :return:
         """
