@@ -30,3 +30,6 @@ venv
 
 # Python
 __pycache__
+
+# Test Reports
+reports/*
