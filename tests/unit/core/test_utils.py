@@ -1,4 +1,4 @@
-"""test utils package."""
+"""test utils file."""
 
 import pytest
 from assertpy import assert_that

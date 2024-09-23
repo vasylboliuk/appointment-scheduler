@@ -1,4 +1,4 @@
-"""test version package."""
+"""test version file."""
 
 import pytest
 from assertpy import assert_that
@@ -12,8 +12,7 @@ class TestVersion:
     def test_get_version(self, client):
         """Test: Verify retrieve version.
 
-        :param client:
-        :return:
+        :param client: test client
         """
         response = client.get("api/version")
         # validation

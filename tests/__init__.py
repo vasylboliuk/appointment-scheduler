@@ -1,1 +1,1 @@
-"""init package."""
+"""tests package."""

@@ -1,1 +1,1 @@
-"""init package."""
+"""core package."""
