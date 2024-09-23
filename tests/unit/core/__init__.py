@@ -1,1 +1,1 @@
-"""init file."""
+"""init package."""

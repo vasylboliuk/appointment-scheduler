@@ -1,4 +1,4 @@
-"""test version file."""
+"""test version package."""
 
 import pytest
 from assertpy import assert_that

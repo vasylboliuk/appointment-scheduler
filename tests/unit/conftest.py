@@ -1,4 +1,4 @@
-"""conftest py file."""
+"""conftest package."""
 
 import pytest
 from starlette.testclient import TestClient
