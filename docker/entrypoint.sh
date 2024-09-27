@@ -4,4 +4,4 @@
 # Example: poetry run alembic upgrade head
 
 # Start the application
-exec "$@"
+uvicorn src.main:app --reload
