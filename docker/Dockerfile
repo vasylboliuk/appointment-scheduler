@@ -25,7 +25,6 @@ COPY pyproject.toml poetry.lock /app/
 RUN poetry --version
 RUN poetry lock --no-update
 RUN poetry install --no-root --only main
-# RUN echo "source $(poetry env info --path)/bin/activate" >> /etc/profile.d/poetry.sh
 RUN poetry show uvicorn
 
 # Copy the rest of the application code
