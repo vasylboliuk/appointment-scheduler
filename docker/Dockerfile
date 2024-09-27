@@ -29,7 +29,7 @@ RUN poetry install --no-root --only main
 RUN poetry show uvicorn
 
 # Copy the rest of the application code
-COPY src/ /app/
+COPY src/ /app/src
 
 # Copy the entrypoint script and give execution permission
 COPY docker/entrypoint.sh /app/entrypoint.sh
