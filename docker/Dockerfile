@@ -38,6 +38,3 @@ EXPOSE 8000
 
 # Set the entrypoint script
 ENTRYPOINT ["/app/entrypoint.sh"]
-
-# Command to run the app (example: running the app with uvicorn)
-CMD ["poetry", "run", "python", "main.py"]
