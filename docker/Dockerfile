@@ -1,10 +1,14 @@
 # Use the Python Alpine base image
 FROM python:3.12-alpine
 
+# Set the working directory
+WORKDIR /app
+
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     POETRY_VERSION=1.8.3 \
-    POETRY_HOME="/opt/poetry"
+    POETRY_HOME="/opt/poetry" \
+    PATH=$PATH:/opt/poetry/bin
 
 # Update and upgrade packages, install build dependencies
 RUN apk update && apk upgrade && \
@@ -13,13 +17,12 @@ RUN apk update && apk upgrade && \
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
-# Set the working directory
-WORKDIR /app
-
 # Copy Poetry project files (pyproject.toml and poetry.lock) first for caching dependencies
 COPY pyproject.toml poetry.lock /app/
 
 # Install dependencies using Poetry (without dev dependencies)
+
+RUN poetry --version
 RUN poetry lock --no-update
 RUN poetry install --no-root --no-dev
 
