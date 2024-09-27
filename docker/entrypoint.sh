@@ -9,4 +9,4 @@ find /app
 
 # Run the main application
 echo "Starting the application..."
-exec uvicorn /app/src.main:app --reload
+exec "uvicorn app.main:app --reload"
