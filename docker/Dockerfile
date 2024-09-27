@@ -24,7 +24,8 @@ COPY pyproject.toml poetry.lock /app/
 
 RUN poetry --version
 RUN poetry lock --no-update
-RUN poetry install --no-root --only main
+RUN poetry install --no-root --only mainwhich
+RUN which uvicorn 
 
 # Copy the rest of the application code
 COPY src/ /app/
@@ -37,4 +38,4 @@ RUN chmod +x /app/entrypoint.sh
 EXPOSE 8000
 
 # Set the entrypoint script
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
