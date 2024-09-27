@@ -24,7 +24,7 @@ COPY pyproject.toml poetry.lock /app/
 
 RUN poetry --version
 RUN poetry lock --no-update
-RUN poetry install --no-root --no-dev
+RUN poetry install --only main
 
 # Copy the rest of the application code
 COPY src/ /app/
