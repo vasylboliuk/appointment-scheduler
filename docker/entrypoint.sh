@@ -1,8 +1,12 @@
 #!/bin/sh
 
-# Start the application
-echo "Start Application"
-find ~/app/appointment-scheduler
-exec "find ~/app/appointment-scheduler"
-exec "$@"
-exec "uvicorn src.main:app --reload"
+# Ruun some setup tasks before starting the main application
+echo "Setting up the environment..."
+
+# Print the directory structure for debugging purposes
+echo "File structure:"
+find /app
+
+# Run the main application
+echo "Starting the application..."
+exec uvicorn /app/src.main:app --reload
