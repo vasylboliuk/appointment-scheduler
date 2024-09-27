@@ -3,7 +3,7 @@ FROM python:3.10-alpine
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
-    POETRY_VERSION=1.4.2 \
+    POETRY_VERSION=1.8.3 \
     POETRY_HOME="/opt/poetry"
 
 # Update and upgrade packages, install build dependencies
@@ -20,6 +20,7 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 
 # Install dependencies using Poetry (without dev dependencies)
+RUN poetry lock --no-update
 RUN poetry install --no-root --no-dev
 
 # Copy the rest of the application code
