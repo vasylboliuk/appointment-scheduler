@@ -27,7 +27,7 @@ COPY pyproject.toml poetry.lock $APP_DIR
 RUN poetry --version
 RUN poetry lock --no-update
 RUN poetry install --no-root --only main
-RUN poetry show uvicorn
+RUN poetry check
 
 # Copy the rest of the application code
 COPY src/ $APP/src
