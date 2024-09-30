@@ -29,7 +29,7 @@ RUN poetry install --no-root --only main
 RUN poetry check
 
 # Copy the rest of the application code
-COPY src/ $APP/src
+COPY src/ $APP_DIR/src
 
 # Copy the entrypoint script and give execution permission
 COPY docker/entrypoint.sh $APP_DIR/entrypoint.sh
