@@ -20,7 +20,7 @@ RUN apk update && apk upgrade && \
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # Copy Poetry project files (pyproject.toml and poetry.lock) first for caching dependencies
-COPY pyproject.toml poetry.lock $APP_DIR
+COPY pyproject.toml poetry.lock $APP_DIR/
 
 # Install dependencies using Poetry (without dev dependencies)
 
