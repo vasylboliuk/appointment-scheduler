@@ -10,7 +10,6 @@ ENV POETRY_VERSION=1.8.3
 ENV POETRY_HOME="/opt/poetry"
 ENV PATH=$PATH:$POETRY_HOME/bin
 ENV APP_DIR="/app"
-RUN echo $PATH
 
 # Update and upgrade packages, install build dependencies
 RUN apk update && apk upgrade && \
