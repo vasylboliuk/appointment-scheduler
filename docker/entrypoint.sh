@@ -5,7 +5,7 @@ echo "Setting up the environment..."
 
 # Print the directory structure for debugging purposes
 echo "File structure:"
-find /app
+tree
 
 # Run the main application
 echo "Starting the application..."
