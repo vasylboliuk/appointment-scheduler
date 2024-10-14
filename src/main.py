@@ -1,6 +1,7 @@
 """main file."""
 
 import logging
+import os
 import sys
 
 import uvicorn
@@ -22,6 +23,7 @@ def main():
 
     :return:
     """
+    os.makedirs(CommonPaths.log_path, exist_ok=True)
     settings = Settings()
     sys.path.append(str(CommonPaths.project_root))
     LoggingManager.setup_logger()

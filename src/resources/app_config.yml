@@ -28,7 +28,7 @@ loggerConfiguration:
       class: src.core.logging_manager.PrintHandler
       formatter: json
     console:
-      level: INFO
+      level: DEBUG
       class: logging.StreamHandler
       formatter: json
       stream: ext://sys.stdout

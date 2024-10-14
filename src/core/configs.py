@@ -5,7 +5,7 @@ This module provides classes to represent settings and configurations.
 
 from typing import Any, Dict, Tuple, Type
 
-from pydantic.fields import Field, FieldInfo
+from pydantic.fields import FieldInfo
 from pydantic_settings import (
     BaseSettings,
     PydanticBaseSettingsSource,
@@ -58,7 +58,7 @@ class Settings(BaseSettings):
 
     host: str
     port: int
-    loggerConfiguration: dict = Field(alias="loggerConfiguration")
+    loggerConfiguration: dict
 
     @classmethod
     def settings_customise_sources(

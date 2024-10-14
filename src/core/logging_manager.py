@@ -50,10 +50,20 @@ class LoggingManager:
     """Custom Loging Manager."""
 
     @staticmethod
-    def setup_logger():
-        """Setup application logger."""
+    def get_logger_configurations() -> dict:
+        """Retrieve logger configuration."""
         settings = Settings()
         logger_configuration = settings.loggerConfiguration
+        return logger_configuration
 
-        logging.config.dictConfig(logger_configuration)
+    @staticmethod
+    def init_logger(configurations: dict):
+        """Init logger by configurations."""
+        logging.config.dictConfig(configurations)
         logging.getLogger(__name__)
+
+    @staticmethod
+    def setup_logger(**kwargs):
+        """Setup application logger."""
+        logger_configuration = LoggingManager.get_logger_configurations()
+        LoggingManager.init_logger(logger_configuration)
