@@ -31,6 +31,10 @@ venv
 # Python
 __pycache__
 
+# Logs
+logs
+logs/*
+
 # Test Reports
 reports/*
 reports/allure-reports
