@@ -11,3 +11,5 @@ class CommonPaths:
 
     project_root = Path(__file__).parent.parent.resolve()
     resource_path = project_root.joinpath("resources")
+    log_path = project_root.joinpath("logs")
+    tests_path = project_root.parent.joinpath("tests")
