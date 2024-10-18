@@ -78,7 +78,7 @@ jobs:
       # Step 5: Run tests
       - name: Run tests
         run: |
-          poetry run pytest --alluredir="reports/allure-report" --cov=src
+          poetry run pytest --alluredir="reports/allure-report" --cov=src --cov-report term-missing
           
   # Job 3: Bump Version using Commitizen
   bump_version:
