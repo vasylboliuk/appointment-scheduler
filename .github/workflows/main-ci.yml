@@ -1,6 +1,9 @@
 name: CI/CD Pipeline
 
 on:
+  push:
+    branches:
+      - feature/18-ci-cd-build-pipeline-with-github-actions
   pull_request:
     branches:
       - main
