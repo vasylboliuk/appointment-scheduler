@@ -1,0 +1,119 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+
+  # Job 1: Code style and security checks
+  code_check:
+    name: Code Style and Security Check
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment using Poetry
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'  # Adjust the Python version to your needs
+
+      # Step 3: Install Poetry
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      # Step 4: Install dependencies with Poetry
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      # Step 5: Run ruff for linting
+      - name: Run ruff for linting
+        run: |
+          poetry run ruff .
+
+      # Step 6: Run bandit for security checks
+      - name: Run bandit for security checks
+        run: |
+          poetry run bandit -r .
+
+
+  # Job 2: Run unit tests
+  run_tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    needs: code_check  # Ensure code style and security checks pass first
+
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment using Poetry
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Step 3: Install Poetry
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      # Step 4: Install dependencies with Poetry
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      # Step 5: Run tests
+      - name: Run tests
+        run: |
+          poetry run pytest --alluredir="reports/allure-report" --cov=src
+          
+  # Job 3: Bump Version using Commitizen
+  bump_version:
+    name: Bump Version
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    needs: run_tests  # Ensure tests pass before bumping version
+
+    steps:
+      # Step 1: Checkout the code with write permissions
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 2: Set up Python and install Commitizen
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install Commitizen
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          poetry install
+          poetry add commitizen
+
+      # Step 3: Bump the version based on the branch
+      - name: Bump version
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            poetry run cz bump --yes --tag --increment=MINOR
+          elif [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            poetry run cz bump --yes --tag --prerelease alpha
+          fi
+
+      # Step 4: Push changes
+      - name: Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git push --follow-tags origin ${{ github.ref }}
