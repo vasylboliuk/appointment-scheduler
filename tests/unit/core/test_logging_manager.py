@@ -21,11 +21,10 @@ class TestLoggingManager:
         logging.debug(debug_msg)
 
         # Validation
-        with caplog.at_level(logging.DEBUG):
-            assert_that(caplog.text).contains(debug_msg)
-            assert_that(caplog.messages).contains(debug_msg)
-            assert_that(len(caplog.records)).is_equal_to(1)
-            assert_that(caplog.records[0].levelname).is_equal_to("DEBUG")
+        assert_that(caplog.text).contains(debug_msg)
+        assert_that(caplog.messages).contains(debug_msg)
+        assert_that(len(caplog.records)).is_equal_to(1)
+        assert_that(caplog.records[0].levelname).is_equal_to("DEBUG")
 
     def test_error_log(self, caplog):
         """Test: Validate that error log message was captured.
