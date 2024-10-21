@@ -1,2 +1,41 @@
 host: "127.0.0.1"
 port: 8080
+loggerConfiguration:
+  version: 1
+  disable_existing_loggers: false
+  loggers:
+    '':
+      level: 10
+      handlers:
+        - console
+        - file
+  formatters:
+    standard:
+      format: "%(asctime)s - %(name)s - [%(levelname)s] -  %(filename)s:%(lineno)d -
+        %(message)s"
+      datefmt: "%Y-%m-%dT%H:%M:%S%z"
+    json:
+      class: src.core.logging_manager.CustomJsonFormatter
+      format: "%(asctime)s %(name)s %(levelname)s %(message)s"
+      datefmt: "%Y-%m-%dT%H:%M:%S%z"
+    colored_console:
+      class: colorlog.ColoredFormatter
+      format: "%(log_color)s%(asctime)s - %(name)s - [%(levelname)s] -  %(filename)s:%(lineno)d
+        - %(message)s"
+      datefmt: "%Y-%m-%dT%H:%M:%S%z"
+  handlers:
+    standard:
+      class: src.core.logging_manager.PrintHandler
+      formatter: json
+    console:
+      level: DEBUG
+      class: logging.StreamHandler
+      formatter: json
+      stream: ext://sys.stdout
+    file:
+      level: DEBUG
+      class: logging.handlers.RotatingFileHandler
+      formatter: standard
+      filename: "logs/appointment-scheduler.log"
+      maxBytes: 500000
+      backupCount: 5
