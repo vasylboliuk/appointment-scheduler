@@ -1,9 +1,6 @@
-name: CI/CD Pipeline
+name: Main Pipeline
 
 on:
-  push:
-    branches:
-      - feature/18-ci-cd-build-pipeline-with-github-actions
   pull_request:
     branches:
       - main
@@ -79,44 +76,3 @@ jobs:
       - name: Run tests
         run: |
           poetry run pytest --alluredir="reports/allure-report" --cov=src --cov-report term-missing
-          
-  # Job 3: Bump Version using Commitizen
-  bump_version:
-    name: Bump Version
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    needs: run_tests  # Ensure tests pass before bumping version
-
-    steps:
-      # Step 1: Checkout the code with write permissions
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Step 2: Set up Python and install Commitizen
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-      - name: Install Commitizen
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry install
-          poetry add commitizen
-
-      # Step 3: Bump the version based on the branch
-      - name: Bump version
-        run: |
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            poetry run cz bump --yes --tag --increment=MINOR
-          elif [ "${{ github.ref }}" == "refs/heads/develop" ]; then
-            poetry run cz bump --yes --tag --prerelease alpha
-          fi
-
-      # Step 4: Push changes
-      - name: Push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git push --follow-tags origin ${{ github.ref }}
