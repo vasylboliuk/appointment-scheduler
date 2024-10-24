@@ -4,6 +4,9 @@ from pydantic import BaseModel
 
 
 class VersionResponse(BaseModel):
-    """Version response model."""
+    """Version response model.
+
+    Some text.
+    """
 
     version: str
