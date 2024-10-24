@@ -1,3 +1,9 @@
+## v0.3.0 (2024-10-24)
+
+### Fix
+
+- **class**: Update doc update remove extra lines
+
 ## 0.2.0 (2024-10-24)
 
 ### Feat
