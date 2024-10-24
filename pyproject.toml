@@ -3,7 +3,6 @@ name = "appoinment-scheduler"
 version = "0.1.0"
 description = "Appoinment Scheduller API PET project"
 authors = ["Vasyl Boliuk"]
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -11,6 +10,8 @@ fastapi = "^0.112.0"
 uvicorn = {extras = ["standard"], version = "^0.30.6"}
 pydantic = "^2.8.2"
 pydantic-settings = "^2.4.0"
+colorlog = "^6.8.0"
+
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.8.0"
