@@ -8,6 +8,8 @@ class VersionResponse(BaseModel):
 
     Temp Doc to remove.
 
+    Temp Doc to remove 2.
+
     """
 
     version: str

@@ -34,8 +34,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.commitizen]
 version="0.1.0"
 version_files = [
-    "src/core/__version__.py",
-    "setup.py:version"
+    "src/core/__version__.py:VERSION"
 ]
 tag_format = "$major.$minor.$patch$prerelease"
 update_changelog_on_bump = true
