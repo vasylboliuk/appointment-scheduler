@@ -15,9 +15,11 @@ def _setup_logger_for_tests():
     """Setup logger for tests."""
     sys.path.append(str(CommonPaths.project_root))
     # create log folder if not exists
+    project_root = CommonPaths.project_root.parent
     tests_path = CommonPaths.tests_path
     tests_log_path = tests_path.joinpath("logs")
     os.makedirs(tests_log_path, exist_ok=True)
+    os.makedirs(project_root.joinpath("logs"), exist_ok=True)  # create log dir in project root
     # replace log file path with tests package
     config = LoggingManager.get_logger_configurations()
     origin_config_file_path = config["handlers"]["file"]["filename"]
