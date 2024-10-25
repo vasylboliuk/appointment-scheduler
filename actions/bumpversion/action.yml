@@ -19,6 +19,7 @@ runs:
     - name: Install dependencies
       run: |
         poetry install
+      shell: bash
 
     # Step 4: Execute bump version
     - name: Bump version
