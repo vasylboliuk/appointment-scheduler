@@ -8,11 +8,13 @@ runs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.12'
+      shell: bash
 
     # Step 2: Install Poetry
     - name: Install Poetry
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
+      shell: bash
 
     # Step 3: Execute bump version
     - name: Bump version
