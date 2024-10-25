@@ -3,11 +3,18 @@ description: 'Create a commit bumping the version of your project and creating a
 runs:
   using: 'composite'
   steps:
-    - name: Activate Poetry
-      run: |
-        poetry shell
-      shell: bash
+    # Step 1: Set up Python environment using Poetry
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
 
+    # Step 2: Install Poetry
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    # Step 3: Execute bump version
     - name: Bump version
       run: |
         cz bump --dry-run --prerelease alpha
