@@ -88,4 +88,4 @@ jobs:
     steps:
       # Step 1: Bump version
       - name: Bump version
-        uses: /actions/bumpversion
+        uses: ./.github/actions/bumpversion
