@@ -6,9 +6,12 @@ runs:
     - name: Activate Poetry
       run: |
         poetry shell
+      shell: bash
+
     - name: Bump version
       run: |
         cz bump --dry-run --prerelease alpha
+      shell: bash
 
 branding:
   icon: 'git-commit'
