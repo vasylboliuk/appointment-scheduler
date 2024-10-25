@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - develop
+      - feature/18-ci-cd-build-pipeline-with-github-actions
+
 
 jobs:
 
@@ -76,3 +78,14 @@ jobs:
       - name: Run tests
         run: |
           poetry run pytest --alluredir="reports/allure-report" --cov=src --cov-report term-missing
+
+  # Job 3: Bump version
+  bump-version:
+    name: Run bump version using commitizen
+    runs-on: ubuntu-latest
+    needs: run_tests  # Ensure tests are pass first
+
+    steps:
+      # Step 1: Bump version
+      - name: Bump version
+        uses: /actions/bumpversion
