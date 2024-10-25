@@ -1,3 +1,25 @@
+## v0.4.0a1 (2024-10-25)
+
+### Feat
+
+- Add ci job bump version
+
+### Fix
+
+- Update command bump
+- Add property shell
+- Add one more step
+- Remove unexpected value
+- Move actions to diff folder
+- Updates for action file
+- Update action file with poetry install
+- Update bump version action file
+- Update main-ci with checkout
+- Update action ci file
+- Update path in ci flow
+- Move ci file to github
+- **class**: Update doc update remove extra lines 2
+
 ## v0.3.0 (2024-10-24)
 
 ### Fix
