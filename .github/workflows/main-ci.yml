@@ -92,4 +92,4 @@ jobs:
 
       # Step 2: Bump version
       - name: Bump version
-        uses: ./.github/actions/bumpversion
+        uses: ./actions/bumpversion
