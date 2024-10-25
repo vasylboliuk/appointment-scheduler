@@ -24,7 +24,7 @@ runs:
     # Step 4: Execute bump version
     - name: Bump version
       run: |
-        cz bump --dry-run --prerelease alpha
+        poetry run cz bump --dry-run --prerelease alpha
       shell: bash
 
 branding:
