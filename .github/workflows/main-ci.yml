@@ -86,6 +86,10 @@ jobs:
     needs: run_tests  # Ensure tests are pass first
 
     steps:
-      # Step 1: Bump version
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Bump version
       - name: Bump version
         uses: ./.github/actions/bumpversion
