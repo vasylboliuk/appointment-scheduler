@@ -15,7 +15,12 @@ runs:
         curl -sSL https://install.python-poetry.org | python3 -
       shell: bash
 
-    # Step 3: Execute bump version
+    # Step 3: Install dependencies with Poetry
+    - name: Install dependencies
+      run: |
+        poetry install
+
+    # Step 4: Execute bump version
     - name: Bump version
       run: |
         cz bump --dry-run --prerelease alpha
