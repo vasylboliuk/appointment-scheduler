@@ -90,10 +90,10 @@ jobs:
     steps:
       # Step 1: Checkout the code from the repository
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
-          repository: vasylboliuk/appointment-scheduler
-          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+#          repository: vasylboliuk/appointment-scheduler
+#          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           fetch-depth: 0
 
       # Step 2: Bump version
