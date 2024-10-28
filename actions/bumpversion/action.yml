@@ -24,6 +24,8 @@ runs:
     # Step 4: Execute bump version
     - name: Bump version
       run: |
+        git config --global user.email "vbboliuk@gmail.com"
+        git config --global user.name "Vasyl Boliuk"
         poetry run cz bump --prerelease alpha
       shell: bash
 #      with:
