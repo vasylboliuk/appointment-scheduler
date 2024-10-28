@@ -7,6 +7,9 @@ on:
       - develop
       - feature/18-ci-cd-build-pipeline-with-github-actions
 
+permissions:                    # Global permissions configuration starts here
+  contents: write               # 'write' access to repository contents
+  pull-requests: write          # 'write' access to pull requests
 
 jobs:
 
@@ -90,12 +93,17 @@ jobs:
     steps:
       # Step 1: Checkout the code from the repository
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-#          repository: vasylboliuk/appointment-scheduler
-#          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0
 
       # Step 2: Bump version
       - name: Bump version
         uses: ./actions/bumpversion
+
+      - name: Push changes
+        uses: vasylboliuk/appointment-scheduler@feature/18-ci-cd-build-pipeline-with-github-actions
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
