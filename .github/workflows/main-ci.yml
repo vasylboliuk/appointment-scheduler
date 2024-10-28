@@ -92,6 +92,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          repository: vasylboliuk/appointment-scheduler
           token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           fetch-depth: 0
 
