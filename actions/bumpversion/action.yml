@@ -46,7 +46,7 @@ runs:
     - name: Push updated version
       run: |
         echo "Push updated version"
-        echo $inputs.github_token
+        echo $GITHUB_TOKEN
         git branch
         git add .
         git commit -m "Git action. Update version"
