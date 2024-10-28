@@ -24,18 +24,20 @@ runs:
     # Step 4: Execute bump version (for develop)
     - name: Bump version
       run: |
-        git config --global user.email "vbboliuk@gmail.com"
-        git config --global user.name "Vasyl Boliuk"
+        echo "Bump version"
+        git config --global user.email "username@users.noreply.github.com"
+        git config --global user.name "Continuous Integration"
         poetry run cz bump --prerelease alpha --files-only --yes
         git tag "v$(poetry run cz version)"
       shell: bash
 
-    - name: Push changes
+    - name: Push version and new tag
       run: |
-        git config --global user.email "vbboliuk@gmail.com"
-        git config --global user.name "Vasyl Boliuk"
+        echo "Push version and new tag"
+        git config --global user.email "username@users.noreply.github.com"
+        git config --global user.name "Continuous Integration"
         git push
-        git push origin tag "v$(poetry run cz version)"
+        git push --tags
       shell: bash
 
 
