@@ -31,13 +31,12 @@ runs:
       shell: bash
 
     - name: Push changes
-      uses: actions/setup-python@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
       run: |
+        git config --global user.email "vbboliuk@gmail.com"
+        git config --global user.name "Vasyl Boliuk"
         git push
         git push origin tag "v$(poetry run cz version)"
+      shell: bash
 
 
 branding:
