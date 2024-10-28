@@ -39,7 +39,15 @@ runs:
       run: |
         echo "Bump version"
         poetry run cz bump --prerelease alpha --files-only
-        git tag "v$(poetry run cz version)"
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+      shell: bash
+
+      # Step 4: Execute bump version (for develop)
+    - name: Create new tag
+      run: |
+        echo "Create new tag"
+        git tag "v$(poetry run cz version -p)"
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
       shell: bash
