@@ -25,10 +25,11 @@ runs:
     - name: Bump version
       run: |
         poetry run cz bump --prerelease alpha
-      with:
-        repository: vasylboliuk/appointment-scheduler
-        token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
       shell: bash
+#      with:
+#        repository: vasylboliuk/appointment-scheduler
+#        token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+
 
 branding:
   icon: 'git-commit'
