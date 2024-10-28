@@ -38,6 +38,9 @@ runs:
       run: |
         git push
         git push --tags
+      with:
+        repository: vasylboliuk/appointment-scheduler
+        token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
       shell: bash
 
 
