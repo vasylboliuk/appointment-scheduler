@@ -22,7 +22,7 @@ jobs:
     steps:
       # Step 1: Checkout the code from the repository
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up Python environment using Poetry
       - name: Set up Python
@@ -61,7 +61,7 @@ jobs:
     steps:
       # Step 1: Checkout the code from the repository
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up Python environment using Poetry
       - name: Set up Python
@@ -97,7 +97,6 @@ jobs:
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0
-          ref: ${{ github.ref_name }}
 
       # Step 2: Bump version
       - name: Bump version
