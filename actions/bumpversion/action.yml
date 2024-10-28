@@ -31,8 +31,8 @@ runs:
     - name: Bump version
       run: |
         echo "Bump version"
-        git config --global user.email "username@users.noreply.github.com"
-        git config --global user.name "Continuous Integration"
+        git config --global user.email "vbboliuk@gmail.com"
+        git config --global user.name "Vasyl Boliuk"
         poetry run cz bump --prerelease alpha
         git tag "v$(poetry run cz version)"
       shell: bash
@@ -42,7 +42,6 @@ runs:
         echo "Push updated version"
         git branch
         git push origin HEAD:feature/18-ci-cd-build-pipeline-with-github-actions
-        git push --tags
       shell: bash
 
     - name: Push created tags
