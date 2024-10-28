@@ -27,12 +27,16 @@ runs:
         git branch
       shell: bash
 
-    # Step 4: Execute bump version (for develop)
+    - name: Configure Git
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+      shell: bash
+
+      # Step 4: Execute bump version (for develop)
     - name: Bump version
       run: |
         echo "Bump version"
-        git config --global user.email "vbboliuk@gmail.com"
-        git config --global user.name "Vasyl Boliuk"
         poetry run cz bump --prerelease alpha
         git tag "v$(poetry run cz version)"
       env:
