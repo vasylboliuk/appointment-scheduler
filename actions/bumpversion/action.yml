@@ -3,6 +3,13 @@ description: 'Create a commit bumping the version of your project and creating a
 runs:
   using: 'composite'
   steps:
+#    # Step 1: Checkout the code from the repository
+#    - name: Checkout code
+#      uses: actions/checkout@v3
+#      with:
+#        persist-credentials: true # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+#        fetch-depth: 0
+
     # Step 1: Set up Python environment using Poetry
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -19,12 +26,6 @@ runs:
     - name: Install dependencies
       run: |
         poetry install
-      shell: bash
-
-    - name: Git branch
-      run: |
-        echo "Git branch"
-        git branch
       shell: bash
 
     - name: Configure Git
