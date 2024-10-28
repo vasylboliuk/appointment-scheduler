@@ -26,6 +26,8 @@ runs:
       run: |
         poetry run cz bump --prerelease alpha
       shell: bash
+      with:
+        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 branding:
   icon: 'git-commit'
