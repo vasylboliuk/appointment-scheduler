@@ -21,6 +21,12 @@ runs:
         poetry install
       shell: bash
 
+    - name: Git branch
+      run: |
+        echo "Git branch"
+        git branch
+      shell: bash
+
     # Step 4: Execute bump version (for develop)
     - name: Bump version
       run: |
