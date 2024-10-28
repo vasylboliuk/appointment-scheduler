@@ -46,6 +46,7 @@ runs:
     - name: Push updated version
       run: |
         echo "Push updated version"
+        echo $inputs.github_token
         git branch
         git add .
         git commit -m "Git action. Update version"
@@ -57,6 +58,7 @@ runs:
     - name: Push created tags
       run: |
         echo "Push created tags"
+        echo $inputs.github_token
         git push --tags
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
