@@ -101,3 +101,5 @@ jobs:
       # Step 2: Bump version
       - name: Bump version
         uses: ./actions/bumpversion
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
