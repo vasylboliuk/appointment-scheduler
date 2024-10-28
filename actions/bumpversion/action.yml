@@ -40,7 +40,8 @@ runs:
         git push --tags
       with:
         repository: vasylboliuk/appointment-scheduler
-        token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        branch: ${{ github.ref }}
       shell: bash
 
 
