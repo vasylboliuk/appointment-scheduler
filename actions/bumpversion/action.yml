@@ -37,13 +37,17 @@ runs:
         git tag "v$(poetry run cz version)"
       shell: bash
 
-    - name: Push version and new tag
+    - name: Push updated version
       run: |
-        echo "Push version and new tag"
-        git config --global user.email "username@users.noreply.github.com"
-        git config --global user.name "Continuous Integration"
+        echo "Push updated version"
         git branch
         git push origin HEAD:feature/18-ci-cd-build-pipeline-with-github-actions
+        git push --tags
+      shell: bash
+
+    - name: Push created tags
+      run: |
+        echo "Push created tags"
         git push --tags
       shell: bash
 
