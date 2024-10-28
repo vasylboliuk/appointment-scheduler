@@ -21,16 +21,24 @@ runs:
         poetry install
       shell: bash
 
-    # Step 4: Execute bump version
+    # Step 4: Execute bump version (for develop)
     - name: Bump version
       run: |
         git config --global user.email "vbboliuk@gmail.com"
         git config --global user.name "Vasyl Boliuk"
-        poetry run cz bump --prerelease alpha
+        poetry run cz bump --prerelease alpha --files-only --yes
+        git tag "v$(poetry run cz version)"
       shell: bash
 #      with:
 #        repository: vasylboliuk/appointment-scheduler
 #        token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+
+    # Step 5: Push version and tags
+    - name: Push version
+      run: |
+        git push
+        git push --tags
+      shell: bash
 
 
 branding:
