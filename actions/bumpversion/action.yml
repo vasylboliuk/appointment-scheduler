@@ -30,6 +30,15 @@ runs:
         git tag "v$(poetry run cz version)"
       shell: bash
 
+    - name: Push changes
+      uses: actions/setup-python@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+      run: |
+        git push
+        git push origin tag "v$(poetry run cz version)"
+
 
 branding:
   icon: 'git-commit'

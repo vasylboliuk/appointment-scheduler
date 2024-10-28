@@ -101,9 +101,3 @@ jobs:
       # Step 2: Bump version
       - name: Bump version
         uses: ./actions/bumpversion
-
-      - name: Push changes
-        uses: vasylboliuk/appointment-scheduler@feature/18-ci-cd-build-pipeline-with-github-actions
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
