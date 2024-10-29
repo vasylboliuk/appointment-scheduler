@@ -1,3 +1,12 @@
+## v0.4.0a3 (2024-10-29)
+
+### Fix
+
+- Update ci flow
+- Update ci flow
+- Fix ci flow
+- Update ci flow
+
 ## v0.4.0a2 (2024-10-28)
 
 ### Feat
