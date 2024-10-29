@@ -32,7 +32,7 @@ runs:
     - name: Bump version
       run: |
         echo "Bump version"
-        poetry run cz bump --prerelease alpha --files-only
+        poetry run cz bump ${{ inputs.prerelease ? '--prerelease alpha' : '' }}  ${{ inputs.changelog ? '--changelog' : '' }} --files-only
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
       shell: bash
