@@ -1,7 +1,7 @@
 name: Main Pipeline
 
 on:
-  pull_request:
+  push:
     branches:
       - main
       - develop
@@ -87,7 +87,6 @@ jobs:
   # Job 3: Bump version
   bump-version_main:
     name: Run bump version using commitizen (main)
-    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 #    needs: code-check  # Ensure tests are pass first
 
@@ -99,6 +98,16 @@ jobs:
           persist-credentials: true # if "false" the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0
 
+      - name: Print git ref
+        run: |
+          echo github.ref
+
+      - name: Extract branch name
+        shell: bash
+        run: | 
+          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
       # Step 2: Bump version (main)
       - name: Bump version if 'main' branch
         uses: ./actions/bumpversion
@@ -107,31 +116,6 @@ jobs:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           changelog: "true"
 
-    # Job 3: Bump version
-  bump-version_develop:
-    name: Run bump version using commitizen (develop)
-#    if: ${{ github.ref == 'refs/heads/feature/18-ci-cd-build-pipeline-with-github-actions' }}
-    runs-on: ubuntu-latest
-    #    needs: code-check  # Ensure tests are pass first
-
-    steps:
-      # Step 1: Checkout the code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: true # if "false" the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0
-
-      # Step 8: Push created tag
-      - name: Print git ref
-        run: |
-          echo "$github.ref"
-
-      - name: Extract branch name
-        shell: bash
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
-        id: extract_branch
-      
       # Step 2: Bump version (custom)
       - name: Bump version if 'custom' branch
         if: github.ref == 'refs/heads/feature/18-ci-cd-build-pipeline-with-github-actions'

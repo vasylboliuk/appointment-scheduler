@@ -51,7 +51,7 @@ runs:
       run: |
         echo "Push updated version"
         git add .
-        git commit -m "Git action. Update version"
+        git commit -m "[skip ci] Git action. Update version"
         git push origin HEAD:feature/18-ci-cd-build-pipeline-with-github-actions
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
