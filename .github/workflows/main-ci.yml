@@ -115,10 +115,10 @@ jobs:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           changelog: "true"
 
-      # Step 2: Bump version (custom branch)
-      - name: Bump version (custom branch)
+      # Step 2: Bump version (custom)
+      - name: Bump version if 'custom' branch
         uses: ./actions/bumpversion
-        if: contains(github.ref, '18-ci-cd-build-pipeline-with-github-actions')
+        if: ${{ github.ref == 'refs/heads/feature/18-ci-cd-build-pipeline-with-github-actions' }}
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           prerelease: "--prerelease alpha"
