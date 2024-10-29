@@ -104,7 +104,7 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          prerelease: "alpha"
+          prerelease: "--prerelease alpha"
           changelog: "false"
 
       # Step 2: Bump version (main)
@@ -113,7 +113,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          prerelease: "alpha"
           changelog: "true"
 
       # Step 2: Bump version (main)
@@ -121,7 +120,7 @@ jobs:
         uses: ./actions/bumpversion
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          prerelease: "alpha"
+          prerelease: "--prerelease alpha"
           changelog: "true"
 
 
