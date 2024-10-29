@@ -7,14 +7,13 @@ import yaml
 
 
 class FileUtil:
-    """
-    File Util class represents methods working with files.
-    """
+    """File Util class represents methods working with files."""
 
     @staticmethod
     def read_yaml_file(file_path: str) -> dict:
-        """
-        Read yaml file by "file_path".
+        """Read yaml file by "file_path".
+
+        sdfsdfjskjdfksdjfhgerfwef
 
         :param file_path:
         :return:
