@@ -86,7 +86,8 @@ jobs:
 
   # Job 3: Bump version
   bump-version_main:
-    name: Run bump version using commitizen
+    name: Run bump version using commitizen (main)
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 #    needs: code-check  # Ensure tests are pass first
 
@@ -108,8 +109,8 @@ jobs:
 
     # Job 3: Bump version
   bump-version_develop:
-    name: Run bump version using commitizen
-    if: ${{ github.ref == 'refs/heads/feature/18-ci-cd-build-pipeline-with-github-actions' }}
+    name: Run bump version using commitizen (develop)
+#    if: ${{ github.ref == 'refs/heads/feature/18-ci-cd-build-pipeline-with-github-actions' }}
     runs-on: ubuntu-latest
     #    needs: code-check  # Ensure tests are pass first
 
@@ -128,6 +129,7 @@ jobs:
 
       # Step 2: Bump version (custom)
       - name: Bump version if 'custom' branch
+        if: github.ref == 'refs/heads/feature/18-ci-cd-build-pipeline-with-github-actions'
         uses: ./actions/bumpversion
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
