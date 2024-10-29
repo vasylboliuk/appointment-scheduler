@@ -127,6 +127,11 @@ jobs:
         run: |
           echo "$github.ref"
 
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+      
       # Step 2: Bump version (custom)
       - name: Bump version if 'custom' branch
         if: github.ref == 'refs/heads/feature/18-ci-cd-build-pipeline-with-github-actions'
