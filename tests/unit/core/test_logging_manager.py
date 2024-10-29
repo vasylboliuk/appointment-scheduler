@@ -1,16 +1,29 @@
 """test logging_manager file."""
 
 import logging
+import os
 
 import pytest
 from assertpy import assert_that, contents_of
 
+from src.core.constants import CommonPaths
 from src.core.logging_manager import LoggingManager
 
 
 @pytest.mark.core
 class TestLoggingManager:
     """Unit Tests class to cover LoggingManager methods."""
+
+    def test_setup_logger_main(self, caplog):
+        """Test: Validate setup app logger.
+
+        :return:
+        """
+        log_path = CommonPaths.tests_path.joinpath("unit").joinpath("core").joinpath("logs")
+        os.makedirs(log_path, exist_ok=True)
+        logger = LoggingManager.setup_logger()
+        # Validation
+        assert_that(logger).is_not_none()
 
     def test_debug_log(self, caplog):
         """Test: Validate that debug log message was captured.
