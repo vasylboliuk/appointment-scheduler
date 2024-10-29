@@ -95,63 +95,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          persist-credentials: true # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          persist-credentials: true # if "false" the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0
-#
-#      # Step 1: Set up Python environment using Poetry
-#      - name: Set up Python
-#        uses: actions/setup-python@v4
-#        with:
-#          python-version: '3.12'
-#
-#      # Step 2: Install Poetry
-#      - name: Install Poetry
-#        run: |
-#          curl -sSL https://install.python-poetry.org | python3 -
-#        shell: bash
-#
-#      # Step 3: Install dependencies with Poetry
-#      - name: Install dependencies
-#        run: |
-#          poetry install
-#        shell: bash
-#
-##      - name: Configure Git
-#        run: |
-#          git config user.name "GitHub Actions"
-#          git config user.email "actions@github.com"
-#        shell: bash
-#
-#        # Step 4: Execute bump version (for develop)
-#      - name: Bump version
-#        run: |
-#          echo "Bump version"
-#          poetry run cz bump --prerelease alpha --files-only
-#          git tag "v$(poetry run cz version)"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-#        shell: bash
-#
-#      - name: Push updated version
-#        run: |
-#          echo "Push updated version"
-#          echo $GITHUB_TOKEN
-#          git branch
-#          git add .
-#          git commit -m "Git action. Update version"
-#          git push origin HEAD:feature/18-ci-cd-build-pipeline-with-github-actions
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-#        shell: bash
-#
-#      - name: Push created tags
-#        run: |
-#          echo "Push created tags"
-#          echo $inputs.github_token
-#          git push --tags
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-#        shell: bash
 
       # Step 2: Bump version
       - name: Bump version
