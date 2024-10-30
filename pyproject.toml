@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "appoinment-scheduler"
-version = "0.2.0a1"
+version = "0.1.0"
 description = "Appoinment Scheduller API PET project"
 authors = ["Vasyl Boliuk"]
 
@@ -32,7 +32,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.commitizen]
-version="0.2.0a1"
+version="0.1.0"
 version_files = [
     "src/core/__version__.py:VERSION",
     "pyproject.toml:^version"
