@@ -97,14 +97,14 @@ jobs:
 
       # Step 2: Bump version (main)
       - name: Bump version if 'main' branch
-        uses: ./actions/bumpversion
         if: github.ref == 'refs/heads/main'
+        uses: ./actions/bumpversion
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           changelog: "true"
 
-      # Step 2: Bump version (custom)
-      - name: Bump version if 'custom' branch
+      # Step 2: Bump version (develop)
+      - name: Bump version if 'develop' branch
         if: github.ref == 'refs/heads/develop'
         uses: ./actions/bumpversion
         with:
