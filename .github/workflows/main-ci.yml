@@ -100,7 +100,7 @@ jobs:
 
       # Step 2: Bump version (main)
       - name: Bump version if 'main' branch
-        if: github.ref == 'refs/heads/main'
+       if: github.ref == 'refs/heads/main'
         uses: ./actions/bumpversion
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
