@@ -16,6 +16,7 @@ jobs:
   code_check:
     name: Code Style and Security Check
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
 
     steps:
       # Step 1: Checkout the code from the repository
@@ -54,6 +55,7 @@ jobs:
     name: Run Unit Tests
     runs-on: ubuntu-latest
     needs: code_check  # Ensure code style and security checks pass first
+    if: github.event.pull_request.draft == false
 
     steps:
       # Step 1: Checkout the code from the repository
@@ -85,7 +87,8 @@ jobs:
   bump-version:
     name: Run bump version using commitizen (main)
     runs-on: ubuntu-latest
-#    needs: code-check  # Ensure tests are pass first
+    needs: run_tests  # Ensure tests are pass first
+    if: github.event.pull_request.draft == false
 
     steps:
       # Step 1: Checkout the code from the repository
@@ -97,14 +100,14 @@ jobs:
 
       # Step 2: Bump version (main)
       - name: Bump version if 'main' branch
+       if: github.ref == 'refs/heads/main'
         uses: ./actions/bumpversion
-        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           changelog: "true"
 
-      # Step 2: Bump version (custom)
-      - name: Bump version if 'custom' branch
+      # Step 2: Bump version (develop)
+      - name: Bump version if 'develop' branch
         if: github.ref == 'refs/heads/develop'
         uses: ./actions/bumpversion
         with:
