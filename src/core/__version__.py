@@ -1,1 +1,3 @@
-VERSION = "0.0.1"
+"""version file."""
+
+VERSION = "0.2.0a1"

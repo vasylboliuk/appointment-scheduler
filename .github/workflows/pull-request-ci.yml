@@ -1,0 +1,87 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**.py'
+      - 'poetry.lock'
+      - 'pyproject.toml'
+      - 'pytest.ini'
+
+permissions:                    # Global permissions configuration starts here
+  contents: write               # 'write' access to repository contents
+  pull-requests: write          # 'write' access to pull requests
+
+jobs:
+
+  # Job 1: Code style and security checks
+  code_check:
+    name: Code Style and Security Check
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment using Poetry
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'  # Adjust the Python version to your needs
+
+      # Step 3: Install Poetry
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      # Step 4: Install dependencies with Poetry
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      # Step 5: Run ruff for linting
+      - name: Run ruff for linting
+        run: |
+          poetry run ruff check .
+
+      # Step 6: Run bandit for security checks
+      - name: Run bandit for security checks
+        run: |
+          poetry run bandit -r .
+
+
+  # Job 2: Run unit tests
+  run_tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    needs: code_check  # Ensure code style and security checks pass first
+
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment using Poetry
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Step 3: Install Poetry
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      # Step 4: Install dependencies with Poetry
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      # Step 5: Run tests
+      - name: Run tests
+        run: |
+          poetry run pytest --alluredir="reports/allure-report" --cov=src --cov-report term-missing
