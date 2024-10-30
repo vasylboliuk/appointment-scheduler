@@ -1,7 +1,0 @@
-"""version file."""
-
-<<<<<<< HEAD
-VERSION = "0.2.0a1"
-=======
-VERSION = "0.2.0"
->>>>>>> 40f22416eaede26d1b91228826155fd3588af8ae
