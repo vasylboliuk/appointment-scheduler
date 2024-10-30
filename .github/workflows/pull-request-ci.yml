@@ -2,9 +2,11 @@ name: Pull Request Checks
 
 on:
   pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize', 'ready_for_review']
     branches:
       - main
       - develop
+      - feature/18_for_ci_cd_work_flow
     paths:
       - '**.py'
       - 'poetry.lock'
