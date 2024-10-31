@@ -1,3 +1,88 @@
+## v0.3.0 (2024-10-31)
+
+## v0.2.0a2 (2024-10-31)
+
+## v0.2.0a1 (2024-10-31)
+
+### Feat
+
+- Update utils file
+- Comment secret key for checkout
+- Update ci worlflow
+- Update ci workflow
+- Update ci workflow
+- Add ci job bump version
+- **class**: Update doc update #2
+- ci-cd: Update main pipeline
+
+### Fix
+
+- Revert version
+- final update workflow
+- Small update
+- Update ci flow
+- Add extract branch
+- Git flow file
+- Fix workflow
+- Update step with if
+- main-ci update if branch
+- ci flow with if
+- Update versions
+- bump version commands
+- Ci flow
+- Update ci flow
+- Update ci flow
+- Update ci flow
+- Fix ci flow
+- Update ci flow
+- Debug ci
+- Debug CI
+- Debug ci
+- Debug
+- Update debug
+- Update ci flow
+- Update workflow
+- Update ci flow
+- Update ci flow
+- Add token
+- Update ci job file
+- Update ci file
+- Update push branch
+- remove files only
+- Update checkout version
+- Add git branch
+- Update with checkout
+- Add ref
+- Update ci flow
+- Update push tags
+- Push command
+- Add push step
+- Update workflow with push
+- Update action file
+- Small update for personal key
+- Add personal secret
+- Add push version
+- Add github user email to ci
+- Comment secret key for bump version
+- Update file
+- Any changes
+- Small update for action
+- Small update
+- Update command bump
+- Add property shell
+- Add one more step
+- Remove unexpected value
+- Move actions to diff folder
+- Updates for action file
+- Update action file with poetry install
+- Update bump version action file
+- Update main-ci with checkout
+- Update action ci file
+- Update path in ci flow
+- Move ci file to github
+- **class**: Update doc update remove extra lines 2
+- **class**: Update doc update remove extra lines
+
 ## v0.2.0 (2024-10-31)
 
 ### Feat
