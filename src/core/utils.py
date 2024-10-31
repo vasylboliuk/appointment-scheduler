@@ -11,7 +11,7 @@ class FileUtil:
 
     @staticmethod
     def read_yaml_file(file_path: str) -> dict:
-        """Read yaml file by "file_path".
+        """Read yaml file by "file_path". Hello to remove.
 
         :param file_path:
         :return:
